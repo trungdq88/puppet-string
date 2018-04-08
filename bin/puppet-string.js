@@ -27,7 +27,7 @@ switch (script) {
       nodeArgs
         .concat(require.resolve('../scripts/' + script))
         .concat(args.slice(scriptIndex + 1)),
-      { stdio: 'inherit', CI: true },
+      { stdio: 'inherit' },
     );
     if (result.signal) {
       if (result.signal === 'SIGKILL') {
