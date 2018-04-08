@@ -3,13 +3,10 @@ const RequestResolver = require('./RequestResolver.js');
 const UrlHeaderRequestMatcher = require('./UrlHeaderRequestMatcher.js');
 
 module.exports = class AppServer {
-  constructor({
-    debug = false,
-    devServerPort,
-    serverPort = 7777,
-    buildPath = './build',
-  } = {}) {
-    this.debug = debug;
+  constructor(
+    { devServerPort, serverPort = 7777, buildPath = './build' } = {},
+  ) {
+    this.debug = !!process.env.PUPPET_STRING_DEBUG;
     this.serverPort = serverPort;
     this.host = `http://localhost:${debug ? devServerPort : serverPort}`;
     this.buildPath = buildPath;
