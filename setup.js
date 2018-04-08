@@ -9,7 +9,7 @@ const appServer = require('./server.js');
 
 const DIR = path.join(os.tmpdir(), 'jest_puppeteer_global_setup');
 
-const isDebug = !!process.env.DEBUG;
+const isDebug = !!process.env.PUPPET_STRING_DEBUG;
 
 module.exports = async function() {
   console.log(chalk.green('Setup Puppeteer'));

@@ -8,7 +8,7 @@ module.exports = class AppServer {
   ) {
     this.debug = !!process.env.PUPPET_STRING_DEBUG;
     this.serverPort = serverPort;
-    this.host = `http://localhost:${debug ? devServerPort : serverPort}`;
+    this.host = `http://localhost:${this.debug ? devServerPort : serverPort}`;
     this.buildPath = buildPath;
     this.server = null;
   }
