@@ -6,7 +6,7 @@ module.exports = class RequestResolver {
       'Access-Control-Allow-Methods':
         'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD',
       'Access-Control-Allow-Headers': 'authorization,content-type',
-      contentType: 'application/json',
+      'Content-Type': 'application/json',
     };
   }
 

@@ -9,9 +9,9 @@ module.exports = class UrlHeaderRequestMatcher {
     const matches = this.rules
       .filter(({ urlPattern, headers }) => {
         const isMatchUrl = request.url().match(urlPattern);
-        const noHeadersProvided = !headers || Object.keys(headers).length === 0;
+        const headersProvided = headers && Object.keys(headers).length > 0;
         const isMatchHeader =
-          noHeadersProvided ||
+          !headersProvided ||
           Object.keys(request.headers()).every(
             key => headers[key] === request.headers()[key],
           );
