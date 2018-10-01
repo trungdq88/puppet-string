@@ -52,3 +52,14 @@ it('should use HtmlDocRequestHandler response', () => {
     headers: { ...resolver.commonHeaders, 'Content-Type': 'text/html' },
   });
 });
+
+it('should not crash on null handler', () => {
+  const mockRequestMatcher = {
+    match: () => null,
+  };
+  const responder = jest.fn();
+  const mockRequest = { method: () => 'GET', continue: responder };
+  const resolver = new RequestResolver({ requestMatcher: mockRequestMatcher });
+  resolver.resolve(mockRequest);
+  expect(responder).toBeCalledWith();
+});

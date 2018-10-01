@@ -33,7 +33,7 @@ module.exports = class RequestResolver {
       return request.respond(
         handler.processRequest(request, this.commonHeaders),
       );
-    } else {
+    } else if (handler) {
       return request.respond(this.toJsonResponse(handler));
     }
     return request.continue();
