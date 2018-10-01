@@ -3,7 +3,7 @@ module.exports = class CustomRequestHandler {
     this.handler = handler;
   }
 
-  processRequest(request) {
-    return this.handler(request);
+  processRequest(request, commonHeaders) {
+    return this.handler(request, commonHeaders);
   }
 };

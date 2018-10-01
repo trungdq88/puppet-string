@@ -30,7 +30,9 @@ module.exports = class RequestResolver {
 
     const handler = this.requestMatcher.match(request);
     if (handler instanceof CustomRequestHandler) {
-      return request.respond(handler.processRequest(request));
+      return request.respond(
+        handler.processRequest(request, this.commonHeaders),
+      );
     } else {
       return request.respond(this.toJsonResponse(handler));
     }
