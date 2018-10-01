@@ -14,8 +14,11 @@
   "dependencies": {
     "chalk": "^2.3.2",
     "cross-spawn": "^6.0.5",
-    "jest": "^22.4.3",
-    "serve": "^6.5.3",
-    "puppeteer": "^1.2.0"
+    "jest": "^23.6.0",
+    "puppeteer": "^1.2.0",
+    "serve": "^6.5.3"
+  },
+  "jest": {
+    "testPathIgnorePatterns": ["<rootDir>/scripts/", "<rootDir>/node_modules/"]
   }
 }

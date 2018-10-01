@@ -1,3 +1,5 @@
+const CustomRequestHandler = require('./CustomRequestHandler.js');
+
 module.exports = class RequestResolver {
   constructor({ requestMatcher, origin }) {
     this.requestMatcher = requestMatcher;
@@ -10,7 +12,7 @@ module.exports = class RequestResolver {
     };
   }
 
-  processResponse(response) {
+  toJsonResponse(response) {
     return Object.assign({}, response, {
       headers: Object.assign({}, response.headers, this.commonHeaders),
       body: JSON.stringify(response.body),
@@ -26,9 +28,11 @@ module.exports = class RequestResolver {
       return;
     }
 
-    const response = this.requestMatcher.match(request);
-    if (response) {
-      return request.respond(this.processResponse(response));
+    const handler = this.requestMatcher.match(request);
+    if (handler instanceof CustomRequestHandler) {
+      return request.respond(handler.processRequest(request));
+    } else {
+      return request.respond(this.toJsonResponse(handler));
     }
     return request.continue();
   }

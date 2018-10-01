@@ -13,5 +13,8 @@ process.on('unhandledRejection', err => {
 const jest = require('jest');
 const argv = process.argv.slice(2);
 
-argv.push('--config', JSON.stringify(require('../jest.config.js')));
+argv.push(
+  '--config',
+  JSON.stringify(require('../jest.puppet-string-config.js')),
+);
 jest.run(argv);
